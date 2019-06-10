@@ -1,0 +1,11 @@
+<%- contentFor('pageSection') %>
+<h2>category ~ <%=category.name%></h2>
+<a href="/notes/<%=category.id%>" class="btn btn-dark">Back</a>
+<hr>
+<div class="card w-50 mx-auto">
+    <div class="card-header"><%=note.name%></div>
+    <div class="card-body">
+        <p class="lead"><%=note.body%></p>
+    </div>
+    
+</div>

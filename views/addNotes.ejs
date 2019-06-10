@@ -1,0 +1,13 @@
+<%- contentFor('pageSection') %>
+<div class="card w-50 mx-auto">
+    <div class="card-header">Make New Note</div>
+    <div class="card-body">
+        <form action="/notes" method="post">
+            <input type="hidden" name="id" value="<%=category%>">
+            <input type="text" name="name" class="form-control mb-3" placeholder="Enter Note Title..">
+            <textarea name="body" id="" cols="30" rows="10" class="form-control mb-3" placeholder="Note body here..."></textarea>
+            <input type="submit" name="submit" value="Create Note" class="btn btn-success w-100">
+        </form>
+    </div>
+    
+</div>

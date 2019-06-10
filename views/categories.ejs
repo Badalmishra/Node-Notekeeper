@@ -1,0 +1,29 @@
+<%- contentFor('pageSection') %>
+    <h2><%= subject.name%></h2>
+    <a href="/subjects" class="btn  btn-dark">Subjects</a>
+    <hr>
+    <div class="card w-50 mx-auto">
+        <div class="card-header">Categories</div>
+        <div class="list-group p-0 border border-0">
+        <% categories.forEach(function(category){ %>
+            <div class="list-group-item p-0 border border-0"> 
+                <form action="/categories/delete?_method=DELETE" method="post" class="form-inline">
+                    <a href="/notes/<%=category.id%>" 
+                        class="lead p-2 form-control col-9">
+                        <%=category.name%>
+                    </a>
+                    <input type="hidden" name="subject_id" value="<%= subject.id%>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="text" value="<%=category.id%>" name="id" hidden>
+                    <input type="submit" value="Delete" class="border border-0 form-control col-3 btn btn-danger">
+                </form>
+            </div>
+        <% }); %>
+        </div>
+        <form action="/categories/addCat" method="post" class="form-inline">
+            <input type="hidden" name="id" value="<%= subject.id%>">
+            <input type="text" class="form-control col-9 "  name="category" placeholder="Enter New Subject">
+            <input type="submit" value="Add" class="col-3 form-control btn btn-primary border border-0 ">
+        </form>
+        
+    </div>

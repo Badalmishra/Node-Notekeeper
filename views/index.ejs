@@ -1,0 +1,24 @@
+<%- contentFor('pageSection') %>
+    <div class="card w-50 mx-auto">
+        <div class="card-header">All Subjects</div>
+        <div class="list-group p-0 border border-0">
+        <% subjects.forEach(function(subject){ %>
+            <div class="list-group-item p-0 border border-0"> 
+                <form action="/subjects/delete?_method=DELETE" method="post" class="form-inline">
+                    <a href="/categories/<%=subject.id%>" 
+                        class="lead p-2 form-control col-9">
+                        <%=subject.name%>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="text" value="<%=subject.id%>" name="id" hidden>
+                    <input type="submit" value="Delete" class="border border-0 form-control col-3 btn btn-danger">
+                </form>
+            </div>
+        <% }); %>
+        </div>
+        <form action="/subjects/addSub" method="post" class="form-inline">
+            <input type="text" class="form-control col-9 "  name="subject" placeholder="Enter New Subject">
+            <input type="submit" value="Add" class="col-3 form-control btn btn-primary border border-0 ">
+        </form>
+        
+    </div>

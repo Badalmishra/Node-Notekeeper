@@ -1,0 +1,27 @@
+<%- contentFor('pageSection') %>
+    <h2><%= category.name%></h2>
+    <a href="/categories/<%=sub_id%>" class="btn  btn-dark">Categories</a>
+    <hr>
+    <div class="card w-50 mx-auto">
+        <div class="card-header">Notess</div>
+        <div class="list-group p-0 border border-0">
+        <% Notes.forEach(function(note){ %>
+            <div class="list-group-item p-0 border border-0"> 
+                <form action="/notes/delete?_method=DELETE" method="post" class="form-inline">
+                    <a href="/notes/<%=note.id%>/<%=category.id%>" 
+                        class="lead p-2 form-control col-9">
+                        <%=note.name%>
+                    </a>
+                    <input type="hidden" name="category_id" value="<%= category.id%>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="text" value="<%=note.id%>" name="id" hidden>
+                    <input type="submit" value="Delete" class="border border-0 form-control col-3 btn btn-danger">
+                </form>
+            </div>
+        <% }); %>
+        </div>
+        <a href="/notes/addNotesPage/<%=category.id%>" class="btn btn-success btn-lg w-100 form-control">
+            Add New Note
+        </a>
+        
+    </div>
